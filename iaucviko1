@@ -1,0 +1,31 @@
+from itertools import combinations
+
+def combine(arr, s): 
+    return list(combinations(arr, s))
+
+def checkSums(targetSum, combination):
+    print(targetSum + " " + sum(combination) + "\n")
+    if targetSum == sum(combination):
+        return True
+
+def printArrays(combination, pole):
+    print(combination)
+    for i in combination:
+        pole.remove(i)
+    print(pole)
+
+def devide(arr): 
+    targetSum = sum(arr)/2
+    if targetSum % 2 == 1 or len(arr) == 0:
+        return False
+
+    for i in range(0, len(arr)):
+        arr = combine(arr, i)
+        print("ide?")
+        for combination in arr:
+            if checkSums(targetSum, combination):
+                printArrays(combination, pole)
+                return True
+
+pole = [1,4,5,1,7,5,1,5,4,2,3,4]
+devide(pole)
